@@ -4,24 +4,24 @@ from tkinter import ttk
 
 def interfaz_uno():
     area_dinamica_limpia()
-    tk.Label(area_dinamica, text="Aquí va un mensaje de bienvenida", font=("Arial", 14)).pack(pady=10)
-    tk.Button(area_dinamica, text="Botón 1", command=lambda: messagebox.showinfo("Título", "Mensaje temporal")).pack()
+    tk.Label(area_dinamica, text="Bienvenido", font=("Arial", 14)).pack(pady=10)
+    tk.Button(area_dinamica, text="Confirmar", command=lambda: messagebox.showinfo("Hola", "Selecciona en la barra de inicio que deseas hacer")).pack()
 
 def interfaz_dos():
     area_dinamica_limpia()
-    tk.Label(area_dinamica, text="Aquí coloca un letrero o label que identifique al alumno", font=("Arial", 14)).pack(pady=10)
+    tk.Label(area_dinamica, text="Datos del alumno", font=("Arial", 14)).pack(pady=10)
 
-    tk.Label(area_dinamica, text="Campo A:").pack()
+    tk.Label(area_dinamica, text="Nombre del alumno:").pack()
     campo_texto_uno = tk.Entry(area_dinamica)
     campo_texto_uno.pack(pady=5)
 
-    tk.Label(area_dinamica, text="Selección A:").pack()
-    opcion_elegida = tk.StringVar(value="Opción 1")
-    tk.Radiobutton(area_dinamica, text="Opción 1", variable=opcion_elegida, value="Opción 1").pack()
-    tk.Radiobutton(area_dinamica, text="Opción 2", variable=opcion_elegida, value="Opción 2").pack()
+    tk.Label(area_dinamica, text="Turno:").pack()
+    opcion_elegida = tk.StringVar(value="Matutino")
+    tk.Radiobutton(area_dinamica, text="Matutino", variable=opcion_elegida, value="Opción 1").pack()
+    tk.Radiobutton(area_dinamica, text="Vespertino", variable=opcion_elegida, value="Opción 2").pack()
 
     tk.Label(area_dinamica, text="Lista desplegable:").pack()
-    combo = ttk.Combobox(area_dinamica, values=["Uno", "Dos", "Tres"])
+    combo = ttk.Combobox(area_dinamica, values=["Prmero", "Segundo", "Tercero"])
     combo.pack()
     combo.current(0)
 
@@ -48,7 +48,7 @@ def interfaz_tres():
 
 def interfaz_cuatro():
     area_dinamica_limpia()
-    tk.Label(area_dinamica, text="Texto de ayuda que el alumno debe mejorar", font=("Arial", 14)).pack(pady=10)
+    tk.Label(area_dinamica, text="Preguntas del programa", font=("Arial", 14)).pack(pady=10)
     contenido = (
         "Explica con tus palabras:\n\n"
         "- ¿Qué hace cada botón?\n"
@@ -73,11 +73,12 @@ menu_lateral.pack(side="left", fill="y")
 area_dinamica = tk.Frame(ventana_principal, bg="white")
 area_dinamica.pack(side="right", expand=True, fill="both")
 
-tk.Button(menu_lateral, text="Pantalla 1", command=interfaz_uno, width=15).pack(pady=10)
-tk.Button(menu_lateral, text="Pantalla 2", command=interfaz_dos, width=15).pack(pady=10)
-tk.Button(menu_lateral, text="Pantalla 3", command=interfaz_tres, width=15).pack(pady=10)
-tk.Button(menu_lateral, text="Pantalla 4", command=interfaz_cuatro, width=15).pack(pady=10)
-tk.Button(menu_lateral, text="Salir", command=ventana_principal.destroy, width=15).pack(pady=30)
+tk.Button(menu_lateral, text="Inicio", command=interfaz_uno, width=15).pack(pady=10)
+tk.Button(menu_lateral, text="Datos generales", command=interfaz_dos, width=15).pack(pady=10)
+tk.Button(menu_lateral, text="Color de la impresión", command=interfaz_tres, width=15).pack(pady=10)
+tk.Button(menu_lateral, text="Dudas del progra", command=interfaz_cuatro, width=15).pack(pady=10)
+tk.Button(menu_lateral, text="Preguntas del programa", command=interfaz_cuatro, width=15).pack(pady=10)
+tk.Button(menu_lateral, text="Regresar", command=ventana_principal.destroy, width=15).pack(pady=30)
 
 interfaz_uno()
 ventana_principal.mainloop()
